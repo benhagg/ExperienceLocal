@@ -204,7 +204,7 @@
       tag: 'Art & Cultural Gallery',
       metaPill: 'Free Admission • Peaceful Indoor',
       location: 'Campus Dr, North Campus Provo',
-      image: 'images/byu-moa.jpg',
+      image: 'images/byu-moa.jpg?v=seamless2',
       description: 'One of the Mountain West’s finest museums, hosting world-class rotating exhibitions, contemporary American works, and light-filled sculpture courtyards.',
       website: 'https://moa.byu.edu/',
       mapsQuery: 'BYU+Museum+of+Art+Provo+UT',
@@ -325,11 +325,13 @@
 
   // 3. Experience / Trailhead Card (Full-Bleed Nature Photography Focal Point)
   function renderExperienceCard(exp) {
+    const hasSubcard = !!exp.event;
     return `
-      <article class="local-card experience-card">
+      <article class="local-card experience-card ${hasSubcard ? 'card-full-bleed moa-cluster-card' : ''}">
         <div class="card-media trail-media">
           <img src="${exp.image}" alt="${escapeHtml(exp.name)}" class="card-img" loading="lazy" />
         </div>
+        ${hasSubcard ? '<div class="moa-body-stage">' : ''}
         <div class="card-body">
           <h3 class="card-title">${escapeHtml(exp.name)}</h3>
           <div class="card-location">
@@ -368,6 +370,7 @@
             </a>
           </div>
         </div>
+        ${hasSubcard ? '</div>' : ''}
       </article>
     `;
   }
@@ -389,18 +392,22 @@
         ${renderEventItem(DOWNTOWN_EVENTS[0])}
       </div>
 
-      <!-- 2. Second: Sundance Mountain Resort Encompassing Section -->
-      <section class="sundance-cluster-card">
+      <!-- 2. Second: Sundance Mountain Resort Encompassing Section (Extends to screen edge) -->
+      <section class="sundance-cluster-card card-full-bleed">
         <div class="sundance-banner">
           <img src="images/sundance-fall.jpg" alt="Sundance Mountain Resort in Fall" class="sundance-banner-img" loading="lazy" />
           <div class="sundance-banner-overlay"></div>
           <div class="sundance-banner-content">
-            <h3 class="sundance-title">Sundance Mountain Resort</h3>
-            <p class="sundance-desc">Rustic alpine culture, seasonal harvest markets, and weekend live music at the base of Mount Timpanogos.</p>
+            <div class="sundance-banner-inner">
+              <h3 class="sundance-title">Sundance Mountain Resort</h3>
+              <p class="sundance-desc">Rustic alpine culture, seasonal harvest markets, and weekend live music at the base of Mount Timpanogos.</p>
+            </div>
           </div>
         </div>
         <div class="sundance-subcards">
-          ${SUNDANCE_EVENTS.map(renderEventItem).join('')}
+          <div class="sundance-subcards-inner">
+            ${SUNDANCE_EVENTS.map(renderEventItem).join('')}
+          </div>
         </div>
       </section>
 
