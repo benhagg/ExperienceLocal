@@ -38,13 +38,12 @@
     {
       id: 'food-truck-roundup',
       name: 'Provo Food Truck Roundup',
-      tag: 'Food Trucks',
-      dateDay: 'Thursdays',
-      dateTime: '5pm – 9pm',
+      dateDay: 'Every Thursday',
+      dateTime: '6pm – 9pm (Mid Apr – Dec)',
       location: 'The Startup Building (560 S 100 W)',
       image: 'images/food-truck-roundup.jpg',
       description: 'A gathering of Utah Valley’s top food trucks serving street tacos, woodfired pizza, artisan ice cream, and Korean BBQ.',
-      website: 'https://thestartupbuilding.com/',
+      website: 'https://www.instagram.com/provoroundup',
       mapsQuery: 'Startup+Building+Provo+UT'
     },
     {
@@ -95,7 +94,7 @@
       dateTime: '8pm – 11pm',
       location: 'Owl Bar, Sundance Resort',
       image: 'images/owl-bar-sundance.jpg',
-      description: 'Intimate live performances from local and touring folk, blues, and acoustic artists inside the restored 1890s Western bar once frequented by Butch Cassidy’s gang.',
+      description: 'Intimate live performances from local and touring folk, blues, and acoustic artists inside the restored 1890s Western bar. Keeping the west just wild enough.',
       website: 'https://www.sundanceresort.com/events/owl-bar-live-music/',
       mapsQuery: 'Owl+Bar+Sundance+UT'
     }
@@ -186,8 +185,6 @@
     {
       id: 'bridal-veil-falls',
       name: 'Bridal Veil Falls & Provo River Parkway',
-      tag: 'Scenic Waterfall',
-      metaPill: '607-Foot Cataract • Free',
       location: 'Provo Canyon (Hwy 189)',
       image: 'images/bridal-veil-falls.jpg',
       description: 'A dramatic 607-foot double cataract waterfall cascading down canyon cliffs. Paved walking and cycling paths run right along the cool river.',
@@ -196,8 +193,6 @@
     {
       id: 'rock-canyon',
       name: 'Rock Canyon Trailhead & Cliffs',
-      tag: 'Limestone Canyon Hike',
-      metaPill: 'Moderate • 5.6 mi Out & Back',
       location: '2620 N Rock Canyon Trailhead',
       image: 'images/rock-canyon.jpg',
       description: 'A rugged mountain hike winding through limestone gorge towers, wooden footbridges, and world-class sport climbing routes.',
@@ -389,13 +384,13 @@
   // Build the Events Tab HTML
   function renderEventsSection() {
     return `
-      <!-- 1. Downtown Provo Happenings -->
+      <!-- 1. First Event: Provo Farmers Market -->
       <div class="local-cards-feed">
-        ${DOWNTOWN_EVENTS.map(renderEventItem).join('')}
+        ${renderEventItem(DOWNTOWN_EVENTS[0])}
       </div>
 
-      <!-- 2. Sundance Mountain Resort Dedicated Section -->
-      <div class="sundance-section">
+      <!-- 2. Second: Sundance Mountain Resort Encompassing Section -->
+      <section class="sundance-cluster-card">
         <div class="sundance-banner">
           <img src="images/sundance-fall.jpg" alt="Sundance Mountain Resort in Fall" class="sundance-banner-img" loading="lazy" />
           <div class="sundance-banner-overlay"></div>
@@ -404,9 +399,14 @@
             <p class="sundance-desc">Rustic alpine culture, seasonal harvest markets, and weekend live music at the base of Mount Timpanogos.</p>
           </div>
         </div>
-        <div class="local-cards-feed">
+        <div class="sundance-subcards">
           ${SUNDANCE_EVENTS.map(renderEventItem).join('')}
         </div>
+      </section>
+
+      <!-- 3. Remaining Downtown Events -->
+      <div class="local-cards-feed" style="margin-top: 20px;">
+        ${DOWNTOWN_EVENTS.slice(1).map(renderEventItem).join('')}
       </div>
     `;
   }

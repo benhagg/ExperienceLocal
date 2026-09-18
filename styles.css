@@ -501,31 +501,38 @@ a {
 }
 
 /* =========================================================
-   6. Sundance Mountain Resort Dedicated Section
+   6. Sundance Mountain Resort Encompassing Section
    ========================================================= */
-.sundance-section {
-  margin-top: 32px;
-}
-
-.sundance-banner {
-  position: relative;
+.sundance-cluster-card {
+  margin-top: 28px;
+  background: #F4EFE6;
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  height: 210px;
-  margin-bottom: 20px;
   box-shadow: var(--shadow-card);
+}
+
+.sundance-cluster-card .sundance-banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  margin-bottom: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .sundance-banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .sundance-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(28, 25, 23, 0.2) 0%, rgba(28, 25, 23, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(28, 25, 23, 0.15) 0%, rgba(28, 25, 23, 0.90) 100%);
 }
 
 .sundance-banner-content {
@@ -539,16 +546,29 @@ a {
 
 .sundance-title {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 4px;
 }
 
 .sundance-desc {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: #F5F5F4;
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.sundance-subcards {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #000000;
+}
+
+.sundance-subcards .local-card {
+  border-color: #E2DBD0;
+  box-shadow: 0 1px 4px rgba(28, 25, 23, 0.05);
 }
 
 /* =========================================================
@@ -619,5 +639,10 @@ a {
 
   .btn-nav-icon {
     width: 44px;
+  }
+
+  .sundance-subcards {
+    padding: 10px;
+    gap: 12px;
   }
 }
