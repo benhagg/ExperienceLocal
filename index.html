@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience Local | Provo, UT</title>
+  <meta name="description" content="Explore local food, events, and experiences in Provo, Utah." />
+
+  <!-- Google Analytics (GA4) -->
+  <!-- Replace 'G-XXXXXXXXXX' with your Google Analytics Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="site-header" aria-label="Main Navigation">
+    <div class="nav-container">
+      <button class="nav-tab active" data-tab="food">
+        <i class="fa-solid fa-utensils"></i> Food
+      </button>
+      <button class="nav-tab" data-tab="events">
+        <i class="fa-solid fa-calendar-days"></i> Events
+      </button>
+      <button class="nav-tab" data-tab="experiences">
+        <i class="fa-solid fa-compass"></i> Experiences
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    
+    <!-- SECTION 1: FOOD -->
+    <section id="foodSection" class="tab-panel active">
+      <div class="panel-header">
+        <h2 class="panel-title">Local Food</h2>
+        <span class="panel-count" id="foodCount"></span>
+      </div>
+      <div class="items-list" id="foodList">
+        <!-- Injected via app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: EVENTS -->
+    <section id="eventsSection" class="tab-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Upcoming Local Events</h2>
+        <span class="panel-count" id="eventsCount"></span>
+      </div>
+      <div class="items-list" id="eventsList">
+        <!-- Injected via app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: EXPERIENCES -->
+    <section id="experiencesSection" class="tab-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Things to Do & Experiences</h2>
+        <span class="panel-count" id="experiencesCount"></span>
+      </div>
+      <div class="items-list" id="experiencesList">
+        <!-- Injected via app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-title">Experience Local Provo</p>
+      <p class="footer-note">Curated guide to food, events, and outdoor experiences in Utah Valley.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
