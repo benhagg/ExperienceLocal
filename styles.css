@@ -1,22 +1,35 @@
 /* =========================================================
-   Experience Local - Simple, Modern, Fast
+   Experience Local - Curated Provo, UT Mobile Field Guide
+   Clean, Image-Centric, Editorial, Tag-Free Design System
    ========================================================= */
 
 :root {
-  --bg-color: #F8FAFC;
-  --card-bg: #FFFFFF;
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
-  --border-color: #E2E8F0;
-  --accent-color: #EA580C;
-  --accent-soft: #FFF7ED;
-  --tag-bg: #F1F5F9;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-full: 9999px;
-  --shadow-card: 0 4px 16px -2px rgba(0, 0, 0, 0.06);
+  --bg-page: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --bg-card-warm: #FDFBF7;
+  --bg-tag: #F5F2EB;
+  --text-ink: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #78716C;
+  --text-faint: #A8A29E;
+  --border-color: #E7E5E4;
+  --border-light: #F0EAE1;
+  --accent: #B45309;
+  --accent-hover: #92400E;
+  --accent-soft: #FEF3C7;
+  --accent-ink: #78350F;
+  --sage: #2A5A44;
+  --sage-soft: #ECFDF5;
+  --sage-ink: #065F46;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --shadow-subtle: 0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-card: 0 4px 16px -4px rgba(28, 25, 23, 0.07);
+  --shadow-hover: 0 8px 24px -6px rgba(28, 25, 23, 0.12);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -25,11 +38,15 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  line-height: 1.5;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-ink);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -38,56 +55,125 @@ a {
   text-decoration: none;
 }
 
-/* Sticky Top Nav Bar */
-.site-header {
-  background: #FFFFFF;
+/* =========================================================
+   1. Masthead (Mobile Editorial Publication Header)
+   ========================================================= */
+.masthead {
+  background: var(--bg-page);
   border-bottom: 1px solid var(--border-color);
+  padding: 24px 16px 18px;
+  text-align: center;
+}
+
+.masthead-container {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.masthead-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.masthead-tag i {
+  margin-right: 4px;
+}
+
+.masthead-date {
+  color: var(--text-muted);
+  border-left: 1px solid var(--border-color);
+  padding-left: 10px;
+}
+
+.masthead-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.masthead-tagline {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* =========================================================
+   2. Sticky Navigation Tabs (Thumb-Friendly Touch Targets)
+   ========================================================= */
+.site-nav {
   position: sticky;
   top: 0;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .nav-container {
-  max-width: 680px;
+  max-width: 520px;
   margin: 0 auto;
   display: flex;
-  padding: 0 16px;
+  padding: 8px 12px;
+  gap: 8px;
 }
 
 .nav-tab {
   flex: 1;
+  min-height: 44px;
   background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 14px 0;
-  font-family: inherit;
-  font-size: 0.95rem;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: all 0.15s ease;
+  gap: 7px;
+  transition: all 0.16s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-tab:hover {
-  color: var(--text-main);
+  color: var(--text-ink);
+  background: rgba(231, 229, 228, 0.4);
 }
 
 .nav-tab.active {
-  color: var(--accent-color);
-  border-bottom-color: var(--accent-color);
+  color: var(--text-ink);
+  background: #FFFFFF;
+  border-color: var(--border-color);
+  box-shadow: 0 1px 4px rgba(28, 25, 23, 0.08);
   font-weight: 700;
 }
 
-/* Main Content & Tab Panels */
+.nav-tab.active i {
+  color: var(--accent);
+}
+
+/* =========================================================
+   3. Main Content & Panel Headers
+   ========================================================= */
 .main-content {
-  max-width: 680px;
-  margin: 20px auto;
-  padding: 0 20px;
+  max-width: 520px;
+  margin: 18px auto 60px;
+  padding: 0 16px;
 }
 
 .tab-panel {
@@ -96,211 +182,442 @@ a {
 
 .tab-panel.active {
   display: block;
-  animation: fadeIn 0.2s ease-out;
+  animation: panelFade 0.2s ease-out;
 }
 
-@keyframes fadeIn {
+@keyframes panelFade {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .panel-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--text-ink);
+}
+
+.panel-kicker {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 2px;
 }
 
 .panel-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.35rem;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-ink);
 }
 
-.panel-count {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 600;
+/* Editorial Category Headers */
+.editorial-group {
+  margin-top: 26px;
+  margin-bottom: 14px;
 }
 
-/* Item Cards List */
-.items-list {
+.editorial-group:first-child {
+  margin-top: 0;
+}
+
+.editorial-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.editorial-group-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-ink);
+}
+
+.editorial-group-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* Feed Container */
+.local-cards-feed,
+.events-digest,
+.field-guide-grid {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
-.card {
-  background: var(--card-bg);
+/* =========================================================
+   4. Image-Focal Mobile Card Architecture (.local-card)
+   ========================================================= */
+.local-card {
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.card-img-wrapper {
+.local-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Hero Media Block */
+.card-media {
   position: relative;
-  height: 175px;
-  background-color: #E2E8F0;
+  width: 100%;
+  height: 220px;
+  background-color: #E7E5E4;
+  overflow: hidden;
 }
 
 .card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.card-badge {
+.local-card:hover .card-img {
+  transform: scale(1.025);
+}
+
+/* Subtle Frosted Date Overlay Badge */
+.card-media-date {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(15, 23, 42, 0.85);
+  bottom: 12px;
+  left: 12px;
+  background: rgba(28, 25, 23, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(4px);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
 }
 
+.card-media-date i {
+  font-size: 0.74rem;
+  color: #FCD34D;
+}
+
+/* Circular Emblem (Farmers Market, etc.) */
+.card-media-emblem {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+  object-fit: contain;
+  z-index: 2;
+}
+
+/* Price Pill on Food Cards */
+.card-media-price {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(28, 25, 23, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Trailhead Media (extra vertical presence for canyon views) */
+.trail-media {
+  height: 230px;
+}
+
+/* Card Body */
 .card-body {
-  padding: 16px;
-}
-
-.card-title-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 4px;
+  padding: 16px 18px 18px;
 }
 
 .card-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
   font-weight: 700;
+  color: var(--text-ink);
+  line-height: 1.25;
+  margin-bottom: 5px;
 }
 
-.card-meta-right {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.card-info-row {
+.card-location {
   font-size: 0.82rem;
   color: var(--text-muted);
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 6px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card-location i {
+  color: var(--accent);
 }
 
 .card-desc {
-  font-size: 0.88rem;
-  color: #334155;
-  line-height: 1.45;
-  margin-bottom: 12px;
+  font-size: 0.90rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
-.highlight-box {
-  background: var(--accent-soft);
-  border-left: 3px solid var(--accent-color);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.82rem;
-  color: #9A3412;
+/* Touch-Friendly Action Buttons */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-nav-primary,
+.btn-nav-accent {
+  flex: 1;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  transition: background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-nav-primary {
+  background: var(--text-ink);
+  color: #FFFFFF;
+}
+
+.btn-nav-primary:hover,
+.btn-nav-primary:active {
+  background: #38332E;
+}
+
+.btn-nav-accent {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn-nav-accent:hover,
+.btn-nav-accent:active {
+  background: var(--accent-hover);
+}
+
+.btn-nav-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--bg-tag);
+  border: 1px solid var(--border-color);
+  color: var(--text-ink);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.92rem;
+  transition: background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-nav-icon:hover,
+.btn-nav-icon:active {
+  background: var(--border-color);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* =========================================================
+   5. BYU MOA Featured Event (Art After Dark Image Hero)
+   ========================================================= */
+.moa-featured-event {
+  margin: 14px 0 16px;
+  background: var(--bg-card-warm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(28, 25, 23, 0.04);
+}
+
+.moa-event-media {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  background-color: #E7E5E4;
+}
+
+.moa-event-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.moa-event-body {
+  padding: 16px;
+}
+
+.moa-event-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-ink);
+  margin-bottom: 4px;
+}
+
+.moa-event-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
   margin-bottom: 14px;
 }
 
-.highlight-box strong {
-  color: #C2410C;
+/* =========================================================
+   6. Sundance Mountain Resort Dedicated Section
+   ========================================================= */
+.sundance-section {
+  margin-top: 32px;
 }
 
-/* Action Buttons */
-.card-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.sundance-banner {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 210px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
 }
 
-.btn-website {
-  flex: 1;
-  background: var(--text-main);
+.sundance-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sundance-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28, 25, 23, 0.2) 0%, rgba(28, 25, 23, 0.88) 100%);
+}
+
+.sundance-banner-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 20px;
   color: #FFFFFF;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: opacity 0.15s;
 }
 
-.btn-website:hover {
-  opacity: 0.9;
+.sundance-title {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
 }
 
-.btn-directions {
-  flex: 1;
-  background: var(--accent-color);
-  color: #FFFFFF;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: opacity 0.15s;
+.sundance-desc {
+  font-size: 0.86rem;
+  color: #F5F5F4;
+  line-height: 1.4;
 }
 
-.btn-directions:hover {
-  opacity: 0.9;
-}
-
-.btn-call {
-  background: var(--tag-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  transition: background-color 0.15s;
-}
-
-.btn-call:hover {
-  background: #E2E8F0;
-}
-
-/* Footer */
+/* =========================================================
+   7. Footer
+   ========================================================= */
 .site-footer {
-  margin-top: 40px;
   border-top: 1px solid var(--border-color);
-  padding: 24px 20px;
+  background: #FAF7F2;
+  padding: 28px 16px 36px;
   text-align: center;
 }
 
 .footer-container {
-  max-width: 680px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
-.footer-title {
-  font-size: 0.85rem;
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 4px;
+  color: var(--text-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.footer-dot {
+  color: var(--accent);
 }
 
 .footer-note {
   font-size: 0.78rem;
   color: var(--text-muted);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   8. Mobile Specific Tweaks
+   ========================================================= */
+@media (max-width: 420px) {
+  .masthead-title {
+    font-size: 1.75rem;
+  }
+
+  .card-media {
+    height: 195px;
+  }
+
+  .trail-media {
+    height: 205px;
+  }
+
+  .card-body {
+    padding: 14px 15px 16px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn-nav-icon {
+    width: 44px;
+  }
 }

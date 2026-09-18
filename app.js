@@ -1,129 +1,25 @@
 /**
- * Experience Local Provo - Food, Events, Experiences Directory
+ * Experience Local Provo - Curated Field Guide
+ * Authentic, varied editorial layouts (Non-AI template)
  */
 
 (function () {
   'use strict';
 
-  // 1. FOOD DATA
-  const FOOD_ITEMS = [
-    {
-      id: 'rockwell-ice-cream',
-      name: 'Rockwell Ice Cream Co.',
-      tag: 'Artisan Ice Cream',
-      metaRight: '$',
-      location: '43 N University Ave, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&auto=format&fit=crop&q=80',
-      description: 'Named America’s #1 Ice Cream. Handcrafted micro-batch ice cream made with local Utah cream in fresh homemade waffle cones.',
-      highlight: 'Must Try: The G.O.A.T. (honeycomb & goat cheese) or Salted Caramel',
-      phone: '(801) 318-5950',
-      website: 'https://rockwellicecream.com/',
-      mapsQuery: 'Rockwell+Ice+Cream+Provo+UT'
-    },
-    {
-      id: 'station-22-cafe',
-      name: 'Station 22 Cafe',
-      tag: 'Southern Comfort',
-      metaRight: '$$',
-      location: '22 W Center St, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
-      description: 'A Center Street classic. Southern-inspired comfort food, crispy chicken & waffles, gourmet burgers, and a vintage craft soda wall.',
-      highlight: 'Must Try: Chicken & Waffles or The Grand Central Burger',
-      phone: '(801) 607-1803',
-      website: 'https://www.station22cafe.com/',
-      mapsQuery: 'Station+22+Cafe+Provo+UT'
-    },
-    {
-      id: 'black-sheep-cafe',
-      name: 'Black Sheep Cafe',
-      tag: 'Native Southwest',
-      metaRight: '$$$',
-      location: '19 N University Ave, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&auto=format&fit=crop&q=80',
-      description: 'Renowned Native American Southwest cuisine. Known for their homemade Navajo frybread, braised pork posole, and cactus pear ribs in historic downtown.',
-      highlight: 'Must Try: Hog Jowl Tacos on Frybread with Honey Butter',
-      phone: '(801) 607-2485',
-      website: 'https://blacksheepcafeprovo.com/',
-      mapsQuery: 'Black+Sheep+Cafe+Provo+UT'
-    },
-    {
-      id: 'chomp-burger',
-      name: 'CHOMP Burger',
-      tag: 'Smashburgers & Shakes',
-      metaRight: '$',
-      location: '45 E 800 N, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
-      description: 'Crispy lacy smash patties on toasted brioche buns, secret house sauce, seasoned crinkle fries, and thick malt shakes.',
-      highlight: 'Must Try: Double Chomp Burger & Nutella Malt Shake',
-      phone: '(801) 374-2466',
-      website: 'https://chompburger.com/',
-      mapsQuery: 'CHOMP+Burger+Provo+UT'
-    },
-    {
-      id: 'brasas-mexican-grill',
-      name: 'Brasas Mexican Grill',
-      tag: 'Street Tacos',
-      metaRight: '$',
-      location: '238 S 100 W, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&auto=format&fit=crop&q=80',
-      description: 'Authentic local taqueria featuring vertical trompo al pastor, grilled meats, fresh pressed tortillas, and salsa bar.',
-      highlight: 'Must Try: Al Pastor Tacos with pineapple and Horchata',
-      phone: '(801) 377-8226',
-      website: 'https://brasasmexicangrill.com/',
-      mapsQuery: 'Brasas+Mexican+Grill+Provo+UT'
-    },
-    {
-      id: 'hruskas-kolaches',
-      name: 'Hruska’s Kolaches',
-      tag: 'Czech Bakery',
-      metaRight: '$',
-      location: '434 W Center St, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
-      description: 'Baked fresh every morning at 6 AM. Pillowy sweet and savory Czech breakfast pastries stuffed with bacon egg cheese, sausage, or berries.',
-      highlight: 'Must Try: Jalapeño Sausage Cheddar or Raspberry Cream Cheese',
-      phone: '(801) 623-3584',
-      website: 'https://hruskaskolaches.com/',
-      mapsQuery: 'Hruskas+Kolaches+Provo+UT'
-    },
-    {
-      id: 'bombay-house',
-      name: 'Bombay House',
-      tag: 'Indian Cuisine',
-      metaRight: '$$',
-      location: '463 N University Ave, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&auto=format&fit=crop&q=80',
-      description: 'A Utah Valley staple for authentic Indian dishes, featuring rich Chicken Tikka Masala, Lamb Boti Kabobs, and fresh tandoori garlic naan.',
-      highlight: 'Must Try: Chicken Tikka Masala & Warm Garlic Naan',
-      phone: '(801) 373-6677',
-      website: 'https://bombayhouse.com/',
-      mapsQuery: 'Bombay+House+Provo+UT'
-    },
-    {
-      id: 'communal',
-      name: 'Communal',
-      tag: 'Farm-to-Table',
-      metaRight: '$$$',
-      location: '102 W Center St, Provo, UT',
-      image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
-      description: 'Focused on sustainable Utah farms and seasonal ingredients. Family-style dining on Center Street with locally roasted meats and fresh trout.',
-      highlight: 'Must Try: Pan-Roasted Utah Trout and Butterscotch Budino',
-      phone: '(801) 805-4770',
-      website: 'https://communalrestaurant.com/',
-      mapsQuery: 'Communal+Restaurant+Provo+UT'
-    }
-  ];
-
-  // 2. EVENTS DATA
-  const EVENTS_ITEMS = [
+  // 1. EVENTS DATA (Calendar / Bulletin Digest)
+  // 1. DOWNTOWN PROVO EVENTS
+  const DOWNTOWN_EVENTS = [
     {
       id: 'provo-farmers-market',
       name: 'Provo Farmers Market',
       tag: 'Weekly Market',
-      metaRight: 'Saturdays 9am - 2pm',
+      badge: 'Local Tradition',
+      dateDay: 'Saturdays',
+      dateTime: '9am – 2pm',
       location: 'Pioneer Park (500 W Center St)',
-      image: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&auto=format&fit=crop&q=80',
-      description: 'Local produce, artisan breads, local honey, food trucks, and live music from Utah Valley makers and growers.',
-      highlight: 'Tip: Come early for fresh baked goods and artisan sourdough.',
+      image: 'images/the-provo-farmers-market.jpg',
+      icon: 'images/farmers-market-icon.png',
+      description: 'Local produce, artisan sourdough, Utah honey, food trucks, and live music from Utah Valley makers and growers every Saturday at Pioneer Park.',
       website: 'https://www.provofarmersmarket.com/',
       mapsQuery: 'Pioneer+Park+Provo+UT'
     },
@@ -131,150 +27,219 @@
       id: 'downtown-art-stroll',
       name: 'Downtown Provo Art Stroll',
       tag: 'Community Art',
-      metaRight: 'First Friday of the Month',
+      dateDay: '1st Friday',
+      dateTime: '6pm – 9pm',
       location: 'Historic Center Street & University Ave',
-      image: 'https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600&auto=format&fit=crop&q=80',
-      description: 'Galleries, local shops, and cafes along Center Street stay open late with local artist exhibitions, live performances, and snacks.',
-      highlight: 'Highlight: Free admission at all participating downtown galleries.',
+      image: 'images/downtown-art-stroll.jpg',
+      description: 'Galleries, local shops, and cafes along Center Street stay open late with local artist exhibitions, live performances, and refreshments.',
       website: 'https://www.downtownprovo.com/art-stroll',
       mapsQuery: 'Historic+Downtown+Provo+UT'
-    },
-    {
-      id: 'rooftop-concert-series',
-      name: 'Provo Rooftop Concert Series',
-      tag: 'Live Music',
-      metaRight: 'Seasonal Summer Evenings',
-      location: 'Downtown Provo (Nu Skin Plaza)',
-      image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80',
-      description: 'Provo’s famous free outdoor live music series featuring local and national bands against the scenic Wasatch Mountain backdrop.',
-      highlight: 'Tip: Bring a blanket or lawn chair early for good lawn spots.',
-      website: 'https://rooftopconcertseries.com/',
-      mapsQuery: 'Nu+Skin+Plaza+Provo+UT'
     },
     {
       id: 'food-truck-roundup',
       name: 'Provo Food Truck Roundup',
       tag: 'Food Trucks',
-      metaRight: 'Thursday Evenings',
+      dateDay: 'Thursdays',
+      dateTime: '5pm – 9pm',
       location: 'The Startup Building (560 S 100 W)',
-      image: 'https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=600&auto=format&fit=crop&q=80',
-      description: 'A gathering of Utah Valley’s top food trucks serving street tacos, woodfired pizza, waffle cones, and Korean BBQ.',
-      highlight: 'Highlight: Indoor and outdoor seating with live acoustic music.',
+      image: 'images/food-truck-roundup.jpg',
+      description: 'A gathering of Utah Valley’s top food trucks serving street tacos, woodfired pizza, artisan ice cream, and Korean BBQ.',
       website: 'https://thestartupbuilding.com/',
       mapsQuery: 'Startup+Building+Provo+UT'
+    },
+    {
+      id: 'rooftop-concert-series',
+      name: 'Provo Rooftop Concert Series',
+      tag: 'Live Music',
+      dateDay: 'Summer',
+      dateTime: 'Seasonal Eves',
+      location: 'Downtown Provo (Nu Skin Plaza)',
+      image: 'images/rooftop-concert-series.webp',
+      description: 'Provo’s famous free outdoor live music series featuring local and national bands against the scenic Wasatch Mountain backdrop.',
+      website: 'https://rooftopconcertseries.com/',
+      mapsQuery: 'Nu+Skin+Plaza+Provo+UT'
     }
   ];
 
-  // 3. EXPERIENCES DATA
+  // 2. SUNDANCE MOUNTAIN RESORT EVENTS
+  const SUNDANCE_EVENTS = [
+    {
+      id: 'oktoberfest',
+      name: 'Oktoberfest at Sundance',
+      tag: 'Alpine Autumn Festival',
+      dateDay: 'Fall Wknds',
+      dateTime: '12pm – 5pm',
+      location: 'Sundance Mountain Resort',
+      image: 'images/oktoberfest-sundance.jpg',
+      description: 'Bavarian-inspired autumn festival featuring authentic German beer, bratwurst and pretzels, live alpine polka music, scenic chairlift rides, and golden canyon foliage.',
+      website: 'https://www.sundanceresort.com/events/oktoberfest/',
+      mapsQuery: 'Sundance+Mountain+Resort+UT'
+    },
+    {
+      id: 'harvest-mini-markets',
+      name: 'Harvest Mini Markets',
+      tag: 'Artisan Market',
+      dateDay: 'Saturdays',
+      dateTime: '11am – 4pm',
+      location: 'The Village Lawn at Sundance',
+      image: 'images/sundance-harvest-mini-market.jpg',
+      description: 'Celebration of the harvest season with local Utah craftsmen, handmade pottery, jewelry, seasonal produce, baked goods, and live acoustic music on the village lawn.',
+      website: 'https://www.sundanceresort.com/events/harvest-mini-markets/',
+      mapsQuery: 'Sundance+Mountain+Resort+Village+UT'
+    },
+    {
+      id: 'owl-bar-live-music',
+      name: 'Owl Bar Live Music',
+      tag: 'Weekend Sessions',
+      dateDay: 'Fri & Sat',
+      dateTime: '8pm – 11pm',
+      location: 'Owl Bar, Sundance Resort',
+      image: 'images/owl-bar-sundance.jpg',
+      description: 'Intimate live performances from local and touring folk, blues, and acoustic artists inside the restored 1890s Western bar once frequented by Butch Cassidy’s gang.',
+      website: 'https://www.sundanceresort.com/events/owl-bar-live-music/',
+      mapsQuery: 'Owl+Bar+Sundance+UT'
+    }
+  ];
+
+  // 2. FOOD DATA (Curated Local Dining)
+  const FOOD_ITEMS = [
+    {
+      id: 'rockwell-ice-cream',
+      name: 'Rockwell Ice Cream Co.',
+      price: '$',
+      location: '43 N University Ave, Historic Downtown',
+      image: 'images/rockwell-ice-cream.jpg',
+      description: 'Voted America’s #1 Ice Cream. Handcrafted micro-batch ice cream made exclusively with local Utah cream, churned in-house and served in warm homemade waffle cones.',
+      phone: '(801) 318-5950',
+      website: 'https://rockwellicecream.com/',
+      mapsQuery: 'Rockwell+Ice+Cream+Provo+UT'
+    },
+    {
+      id: 'brasas-mexican-grill',
+      name: 'Brasas Mexican Grill',
+      price: '$',
+      location: '238 S 100 W',
+      image: 'images/brasas-mexican-grill.jpg',
+      description: 'Authentic taqueria known for roasted vertical trompo al pastor with pineapple, carne asada, handmade tortillas, and salsa bar.',
+      phone: '(801) 377-8226',
+      mapsQuery: 'Brasas+Mexican+Grill+Provo+UT'
+    },
+    {
+      id: 'chom-burger',
+      name: 'CHOM Burger',
+      price: '$',
+      location: '45 E 800 N',
+      image: 'images/chom-burger.jpg',
+      description: 'Crispy lacy-edge smash patties on toasted brioche buns, seasoned crinkle fries, house fry sauce, and thick malt shakes.',
+      phone: '(801) 374-2466',
+      website: 'https://chomburger.com/',
+      mapsQuery: 'CHOM+Burger+Provo+UT'
+    },
+    {
+      id: 'bombay-house',
+      name: 'Bombay House',
+      price: '$$',
+      location: '463 N University Ave',
+      image: 'images/bombay-house.png',
+      description: 'A Utah Valley staple for decades. Rich chicken tikka masala, sizzling lamb boti kabobs, mango lassi, and fresh tandoori garlic naan.',
+      phone: '(801) 373-6677',
+      website: 'https://bombayhouse.com/',
+      mapsQuery: 'Bombay+House+Provo+UT'
+    },
+    {
+      id: 'two-jacks-pizza',
+      name: 'Two Jack’s Pizza',
+      price: '$$',
+      location: '80 W Center St',
+      image: 'images/two-jacks-pizza.jpg',
+      description: 'Beloved Center Street staple with dough made fresh daily, generous gourmet toppings, calzones, and hot cheese breadsticks.',
+      phone: '(801) 377-4747',
+      website: 'https://www.twojackspizza.com/',
+      mapsQuery: 'Two+Jacks+Pizza+Provo+UT'
+    },
+    {
+      id: 'hruskas-kolaches',
+      name: 'Hruska’s Kolaches',
+      price: '$',
+      location: '434 W Center St',
+      image: 'images/hruskas-kolaches.jpg',
+      description: 'Baked fresh daily at 6 AM. Pillowy sweet and savory Czech dough stuffed with sausage egg cheese, bacon jalapeño, or fresh fruit.',
+      phone: '(801) 623-3584',
+      website: 'https://hruskaskolaches.com/',
+      mapsQuery: 'Hruskas+Kolaches+Provo+UT'
+    },
+    {
+      id: 'station-22-cafe',
+      name: 'Station 22 Cafe',
+      price: '$$',
+      location: '22 W Center St, Downtown',
+      image: 'images/station-22-cafe.jpg',
+      description: 'A Center Street landmark. Southern-inspired comfort food, crispy buttermilk chicken & waffles, artisan smash burgers, and a vintage craft soda wall.',
+      phone: '(801) 607-1803',
+      website: 'https://www.station22cafe.com/',
+      mapsQuery: 'Station+22+Cafe+Provo+UT'
+    }
+  ];
+
+  // 3. EXPERIENCES DATA (Field Guide & Outdoor Landscape Layout)
   const EXPERIENCES_ITEMS = [
     {
       id: 'bridal-veil-falls',
       name: 'Bridal Veil Falls & Provo River Parkway',
       tag: 'Scenic Waterfall',
-      metaRight: 'Free • All Year',
+      metaPill: '607-Foot Cataract • Free',
       location: 'Provo Canyon (Hwy 189)',
-      image: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&auto=format&fit=crop&q=80',
-      description: 'A stunning 607-foot double cataract waterfall just minutes up Provo Canyon with paved walking and biking trails along the river.',
-      highlight: 'Best for: Easy scenic walk, family photos, and river watching.',
-      website: 'https://www.utahvalley.com/listing/bridal-veil-falls/252/',
+      image: 'images/bridal-veil-falls.jpg',
+      description: 'A dramatic 607-foot double cataract waterfall cascading down canyon cliffs. Paved walking and cycling paths run right along the cool river.',
       mapsQuery: 'Bridal+Veil+Falls+Provo+Canyon+UT'
     },
     {
       id: 'rock-canyon',
-      name: 'Rock Canyon Trail & Climbing',
-      tag: 'Hiking & Climbing',
-      metaRight: 'Moderate • Free',
+      name: 'Rock Canyon Trailhead & Cliffs',
+      tag: 'Limestone Canyon Hike',
+      metaPill: 'Moderate • 5.6 mi Out & Back',
       location: '2620 N Rock Canyon Trailhead',
-      image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80',
-      description: 'A dramatic limestone canyon trail passing over wooden bridges and soaring rock faces, popular for hikers and rock climbers alike.',
-      highlight: 'Trail: 5.6 miles out-and-back to the Squaw Peak overlook.',
-      website: 'https://www.utahvalley.com/listing/rock-canyon-trailhead/242/',
+      image: 'images/rock-canyon.jpg',
+      description: 'A rugged mountain hike winding through limestone gorge towers, wooden footbridges, and world-class sport climbing routes.',
       mapsQuery: 'Rock+Canyon+Trailhead+Provo+UT'
     },
     {
       id: 'byu-moa',
       name: 'BYU Museum of Art (MOA)',
-      tag: 'Art & Culture',
-      metaRight: 'Free Admission',
+      tag: 'Art & Cultural Gallery',
+      metaPill: 'Free Admission • Peaceful Indoor',
       location: 'Campus Dr, North Campus Provo',
-      image: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=600&auto=format&fit=crop&q=80',
-      description: 'One of the premier art museums in the Mountain West, featuring world-class rotating exhibitions, American art, and contemporary collections.',
-      highlight: 'Perk: Completely free admission and peaceful indoor galleries.',
+      image: 'images/byu-moa.jpg',
+      description: 'One of the Mountain West’s finest museums, hosting world-class rotating exhibitions, contemporary American works, and light-filled sculpture courtyards.',
       website: 'https://moa.byu.edu/',
-      mapsQuery: 'BYU+Museum+of+Art+Provo+UT'
+      mapsQuery: 'BYU+Museum+of+Art+Provo+UT',
+      event: {
+        title: 'Art After Dark',
+        tag: 'Signature Evening Event',
+        badge: 'Free Admission',
+        timing: 'Select Friday Evenings • 7:00 – 10:00 PM',
+        image: 'images/byu-moa-art-after-dark.png',
+        description: 'The MOA’s flagship after-hours celebration featuring live musical performances, student art exhibitions, light refreshments, and late-night gallery strolls.',
+        website: 'https://moa.byu.edu/art-after-dark'
+      }
     },
     {
       id: 'provo-river-tubing',
       name: 'Provo River Tubing & Fly Fishing',
-      tag: 'Water & Outdoor',
-      metaRight: 'Summer Activity',
+      tag: 'Canyon River Activity',
+      metaPill: 'Summer Float • Blue Ribbon Trout',
       location: 'Lower Provo Canyon',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80',
-      description: 'Float down the cool alpine waters of the Provo River on a tube or kayak, or enjoy blue-ribbon fly fishing for wild brown trout.',
-      highlight: 'Best for: Cooling off on warm summer afternoons.',
-      website: 'https://provoriveroutdoors.com/',
+      image: 'images/provo-river-tubing.jpg',
+      description: 'Float down cold canyon mountain water on a warm afternoon or enjoy premier catch-and-release fly fishing along the river parkway.',
       mapsQuery: 'Provo+River+Parkway+UT'
     }
   ];
 
-  // Google Analytics Event Helper
+  // Helper: Analytics Tracking
   function trackEvent(eventName, params = {}) {
     if (typeof gtag === 'function') {
       gtag('event', eventName, params);
     }
-  }
-
-  // Render Card Template
-  function createCardHTML(item) {
-    return `
-      <article class="card">
-        <div class="card-img-wrapper">
-          <img src="${item.image}" alt="${escapeHtml(item.name)}" class="card-img" loading="lazy" />
-          <span class="card-badge">${escapeHtml(item.tag)}</span>
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <h3 class="card-title">${escapeHtml(item.name)}</h3>
-            <span class="card-meta-right">${escapeHtml(item.metaRight)}</span>
-          </div>
-
-          <div class="card-info-row">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>${escapeHtml(item.location)}</span>
-          </div>
-
-          <p class="card-desc">${escapeHtml(item.description)}</p>
-
-          <div class="highlight-box">
-            ${escapeHtml(item.highlight)}
-          </div>
-
-          <div class="card-actions">
-            ${item.website ? `
-              <a href="${item.website}" 
-                 target="_blank" 
-                 rel="noopener" 
-                 class="btn-website" 
-                 data-name="${escapeHtml(item.name)}">
-                <i class="fa-solid fa-globe"></i> Website
-              </a>
-            ` : ''}
-            <a href="https://www.google.com/maps/search/?api=1&query=${item.mapsQuery}" 
-               target="_blank" 
-               rel="noopener" 
-               class="btn-directions" 
-               data-name="${escapeHtml(item.name)}">
-              <i class="fa-solid fa-diamond-turn-right"></i> Directions
-            </a>
-            ${item.phone ? `
-              <a href="tel:${item.phone.replace(/[^0-9]/g, '')}" class="btn-call" title="Call">
-                <i class="fa-solid fa-phone"></i>
-              </a>
-            ` : ''}
-          </div>
-        </div>
-      </article>
-    `;
   }
 
   function escapeHtml(str) {
@@ -284,60 +249,263 @@
     });
   }
 
-  // Populate Lists
-  const foodList = document.getElementById('foodList');
+  // =========================================================
+  // RENDERERS (Mobile-First, Image-Centric, Tag-Free)
+  // =========================================================
+
+  // 1. Event Item (Hero Image Focal Point + Integrated Date Overlay)
+  function renderEventItem(event) {
+    return `
+      <article class="local-card event-card">
+        ${event.image ? `
+          <div class="card-media">
+            <img src="${event.image}" alt="${escapeHtml(event.name)}" class="card-img" loading="lazy" />
+            ${event.icon ? `
+              <img src="${event.icon}" alt="Emblem" class="card-media-emblem" title="${escapeHtml(event.name)}" />
+            ` : ''}
+            <div class="card-media-date">
+              <i class="fa-regular fa-calendar"></i>
+              <span>${escapeHtml(event.dateDay)} • ${escapeHtml(event.dateTime)}</span>
+            </div>
+          </div>
+        ` : ''}
+        <div class="card-body">
+          <h3 class="card-title">${escapeHtml(event.name)}</h3>
+          <div class="card-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>${escapeHtml(event.location)}</span>
+          </div>
+          <p class="card-desc">${escapeHtml(event.description)}</p>
+          <div class="card-actions">
+            ${event.website ? `
+              <a href="${event.website}" target="_blank" rel="noopener" class="btn-nav-primary" data-name="${escapeHtml(event.name)}">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Details
+              </a>
+            ` : ''}
+            <a href="https://www.google.com/maps/search/?api=1&query=${event.mapsQuery}" target="_blank" rel="noopener" class="btn-nav-accent" data-name="${escapeHtml(event.name)}">
+              <i class="fa-solid fa-diamond-turn-right"></i> Directions
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // 2. Food Item (Appetizing Full-Width Hero Image Focal Point)
+  function renderFoodItem(item) {
+    return `
+      <article class="local-card food-card">
+        <div class="card-media">
+          <img src="${item.image}" alt="${escapeHtml(item.name)}" class="card-img" loading="lazy" />
+          ${item.price ? `
+            <span class="card-media-price">${escapeHtml(item.price)}</span>
+          ` : ''}
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${escapeHtml(item.name)}</h3>
+          <div class="card-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>${escapeHtml(item.location)}</span>
+          </div>
+          <p class="card-desc">${escapeHtml(item.description)}</p>
+          <div class="card-actions">
+            ${item.website ? `
+              <a href="${item.website}" target="_blank" rel="noopener" class="btn-nav-primary" data-name="${escapeHtml(item.name)}">
+                <i class="fa-solid fa-globe"></i> Website
+              </a>
+            ` : ''}
+            <a href="https://www.google.com/maps/search/?api=1&query=${item.mapsQuery}" target="_blank" rel="noopener" class="btn-nav-accent" data-name="${escapeHtml(item.name)}">
+              <i class="fa-solid fa-diamond-turn-right"></i> Directions
+            </a>
+            ${item.phone ? `
+              <a href="tel:${item.phone.replace(/[^0-9]/g, '')}" class="btn-nav-icon" title="Call ${escapeHtml(item.name)}">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            ` : ''}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // 3. Experience / Trailhead Card (Full-Bleed Nature Photography Focal Point)
+  function renderExperienceCard(exp) {
+    return `
+      <article class="local-card experience-card">
+        <div class="card-media trail-media">
+          <img src="${exp.image}" alt="${escapeHtml(exp.name)}" class="card-img" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${escapeHtml(exp.name)}</h3>
+          <div class="card-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>${escapeHtml(exp.location)}</span>
+          </div>
+          <p class="card-desc">${escapeHtml(exp.description)}</p>
+
+          ${exp.event ? `
+            <div class="moa-featured-event">
+              <div class="moa-event-media">
+                <img src="${escapeHtml(exp.event.image)}" alt="${escapeHtml(exp.event.title)}" class="moa-event-img" loading="lazy" />
+                <div class="card-media-date">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>${escapeHtml(exp.event.timing)}</span>
+                </div>
+              </div>
+              <div class="moa-event-body">
+                <h4 class="moa-event-title">${escapeHtml(exp.event.title)}</h4>
+                <p class="moa-event-desc">${escapeHtml(exp.event.description)}</p>
+                <a href="${escapeHtml(exp.event.website)}" target="_blank" rel="noopener" class="btn-nav-accent btn-full" data-name="${escapeHtml(exp.event.title)}">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Art After Dark Details &amp; Dates
+                </a>
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="card-actions">
+            ${exp.website ? `
+              <a href="${exp.website}" target="_blank" rel="noopener" class="btn-nav-primary" data-name="${escapeHtml(exp.name)}">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Museum Info
+              </a>
+            ` : ''}
+            <a href="https://www.google.com/maps/search/?api=1&query=${exp.mapsQuery}" target="_blank" rel="noopener" class="btn-nav-accent" data-name="${escapeHtml(exp.name)}">
+              <i class="fa-solid fa-diamond-turn-right"></i> Directions
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Build the Food Tab HTML (Clean, Tag-Free Mobile Feed)
+  function renderFoodSection() {
+    return `
+      <div class="local-cards-feed">
+        ${FOOD_ITEMS.map(renderFoodItem).join('')}
+      </div>
+    `;
+  }
+
+  // Build the Events Tab HTML
+  function renderEventsSection() {
+    return `
+      <!-- 1. Downtown Provo Happenings -->
+      <div class="local-cards-feed">
+        ${DOWNTOWN_EVENTS.map(renderEventItem).join('')}
+      </div>
+
+      <!-- 2. Sundance Mountain Resort Dedicated Section -->
+      <div class="sundance-section">
+        <div class="sundance-banner">
+          <img src="images/sundance-fall.jpg" alt="Sundance Mountain Resort in Fall" class="sundance-banner-img" loading="lazy" />
+          <div class="sundance-banner-overlay"></div>
+          <div class="sundance-banner-content">
+            <h3 class="sundance-title">Sundance Mountain Resort</h3>
+            <p class="sundance-desc">Rustic alpine culture, seasonal harvest markets, and weekend live music at the base of Mount Timpanogos.</p>
+          </div>
+        </div>
+        <div class="local-cards-feed">
+          ${SUNDANCE_EVENTS.map(renderEventItem).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // Populate Containers
   const eventsList = document.getElementById('eventsList');
+  const foodList = document.getElementById('foodList');
   const experiencesList = document.getElementById('experiencesList');
 
-  foodList.innerHTML = FOOD_ITEMS.map(createCardHTML).join('');
-  eventsList.innerHTML = EVENTS_ITEMS.map(createCardHTML).join('');
-  experiencesList.innerHTML = EXPERIENCES_ITEMS.map(createCardHTML).join('');
+  if (eventsList) {
+    eventsList.innerHTML = renderEventsSection();
+  }
+  if (foodList) {
+    foodList.innerHTML = renderFoodSection();
+  }
+  if (experiencesList) {
+    experiencesList.innerHTML = EXPERIENCES_ITEMS.map(renderExperienceCard).join('');
+  }
 
-  document.getElementById('foodCount').textContent = `${FOOD_ITEMS.length} spots`;
-  document.getElementById('eventsCount').textContent = `${EVENTS_ITEMS.length} events`;
-  document.getElementById('experiencesCount').textContent = `${EXPERIENCES_ITEMS.length} activities`;
-
-  // Attach tracking to buttons
-  document.querySelectorAll('.btn-website').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Attach Analytics Tracking to Interactive Links
+  document.querySelectorAll('a[data-name]').forEach(link => {
+    link.addEventListener('click', (e) => {
       const name = e.currentTarget.getAttribute('data-name');
-      trackEvent('click_website', { item_name: name });
+      const isDir = e.currentTarget.classList.contains('btn-nav-accent');
+      trackEvent(isDir ? 'click_directions' : 'click_website', { item_name: name });
     });
   });
 
-  document.querySelectorAll('.btn-directions').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const name = e.currentTarget.getAttribute('data-name');
-      trackEvent('click_directions', { item_name: name });
-    });
-  });
-
-  // Tab Navigation Handling
+  // =========================================================
+  // TAB NAVIGATION & QUERY PARAM STATE (?tab=events)
+  // =========================================================
   const navTabs = document.querySelectorAll('.nav-tab');
   const tabPanels = {
-    food: document.getElementById('foodSection'),
     events: document.getElementById('eventsSection'),
+    food: document.getElementById('foodSection'),
     experiences: document.getElementById('experiencesSection')
   };
 
-  navTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetTab = tab.getAttribute('data-tab');
+  function switchTab(targetTab, updateHistory = true, shouldScroll = false) {
+    if (!tabPanels[targetTab]) {
+      targetTab = 'events';
+    }
 
-      navTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    // Update tab button active state
+    navTabs.forEach(tab => {
+      if (tab.getAttribute('data-tab') === targetTab) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
 
-      Object.keys(tabPanels).forEach(key => {
+    // Update panels
+    Object.keys(tabPanels).forEach(key => {
+      if (tabPanels[key]) {
         if (key === targetTab) {
           tabPanels[key].classList.add('active');
         } else {
           tabPanels[key].classList.remove('active');
         }
-      });
+      }
+    });
 
-      trackEvent('switch_tab', { tab_name: targetTab });
+    // Sync query parameter (?tab=...)
+    if (updateHistory) {
+      const url = new URL(window.location);
+      url.searchParams.set('tab', targetTab);
+      window.history.replaceState({ tab: targetTab }, '', url);
+    }
+
+    trackEvent('switch_tab', { tab_name: targetTab });
+
+    if (shouldScroll) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // Tab click listeners
+  navTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.getAttribute('data-tab');
+      switchTab(targetTab, true, true);
     });
   });
+
+  // Browser back / forward buttons
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    const tabFromUrl = params.get('tab') || 'events';
+    switchTab(tabFromUrl, false, false);
+  });
+
+  // Initialize active tab on load/reload (defaults to events)
+  const initialParams = new URLSearchParams(window.location.search);
+  const initialTab = initialParams.get('tab');
+  if (initialTab && tabPanels[initialTab]) {
+    switchTab(initialTab, false, false);
+  } else {
+    switchTab('events', false, false);
+  }
 
 })();
