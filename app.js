@@ -480,7 +480,13 @@
     trackEvent('switch_tab', { tab_name: targetTab });
 
     if (shouldScroll) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const navEl = document.querySelector('.site-nav');
+      if (navEl) {
+        const navTop = navEl.getBoundingClientRect().top + window.pageYOffset;
+        if (window.pageYOffset > navTop) {
+          window.scrollTo({ top: navTop, behavior: 'smooth' });
+        }
+      }
     }
   }
 

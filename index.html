@@ -40,14 +40,18 @@
 </head>
 <body>
 
-  <!-- Masthead / Local Publication Header -->
-  <header class="masthead">
-    <div class="masthead-container">
+  <!-- Fixed Fullscreen Background Photo (does not scroll with the page) -->
+  <div class="fixed-background" aria-hidden="true"></div>
+
+  <!-- Hero Opening (Top Half of Page) -->
+  <header class="hero-cover">
+    <div class="hero-cover-content">
       <div class="masthead-meta">
         <span class="masthead-tag"><i class="fa-solid fa-mountain-sun"></i> Utah Valley</span>
         <span class="masthead-date">Provo</span>
       </div>
       <h1 class="masthead-title">Experience Local Provo</h1>
+      <p class="hero-cover-subtitle">Curated Food, Events &amp; Culture</p>
     </div>
   </header>
 
@@ -66,58 +70,46 @@
     </div>
   </nav>
 
-  <!-- Main Content Container -->
-  <main class="main-content">
-    
-    <!-- SECTION 1: EVENTS (Default) -->
-    <section id="eventsSection" class="tab-panel active">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">What’s Happening in Town</h2>
+  <!-- Blurred Content Stage (Visual Distinction Under Tab Bar) -->
+  <div class="content-backdrop-area">
+    <!-- Main Content Container -->
+    <main class="main-content">
+      
+      <!-- SECTION 1: EVENTS (Default) -->
+      <section id="eventsSection" class="tab-panel active">
+        <div class="events-digest" id="eventsList">
+          <!-- Injected via app.js -->
         </div>
-      </div>
-      <div class="events-digest" id="eventsList">
-        <!-- Injected via app.js -->
-      </div>
-    </section>
+      </section>
 
-    <!-- SECTION 2: FOOD -->
-    <section id="foodSection" class="tab-panel">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">Where Locals Actually Eat</h2>
+      <!-- SECTION 2: FOOD -->
+      <section id="foodSection" class="tab-panel">
+        <div id="foodList">
+          <!-- Injected via app.js with varied editorial layouts -->
         </div>
-      </div>
-      <div id="foodList">
-        <!-- Injected via app.js with varied editorial layouts -->
-      </div>
-    </section>
+      </section>
 
-    <!-- SECTION 3: EXPERIENCES -->
-    <section id="experiencesSection" class="tab-panel">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">Trails, Canyons & Culture</h2>
+      <!-- SECTION 3: EXPERIENCES -->
+      <section id="experiencesSection" class="tab-panel">
+        <div class="field-guide-grid" id="experiencesList">
+          <!-- Injected via app.js with landscape outdoor cards -->
         </div>
-      </div>
-      <div class="field-guide-grid" id="experiencesList">
-        <!-- Injected via app.js with landscape outdoor cards -->
-      </div>
-    </section>
+      </section>
 
-  </main>
+    </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <span class="footer-logo">Experience Local</span>
-        <span class="footer-dot">•</span>
-        <span>Provo, UT</span>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <span class="footer-logo">Experience Local</span>
+          <span class="footer-dot">•</span>
+          <span>Provo, UT</span>
+        </div>
+        <p class="footer-note">Independent, hand-curated directory.</p>
       </div>
-      <p class="footer-note">Independent, hand-curated directory.</p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script src="app.js"></script>
 </body>
